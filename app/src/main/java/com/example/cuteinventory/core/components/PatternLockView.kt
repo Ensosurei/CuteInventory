@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -27,12 +28,19 @@ data class PatternDot(
 
 @Composable
 fun PatternLockView(
+    key: Any = Unit,
     modifier: Modifier = Modifier,
+    clearTrigger: Int = 0,
     nodeRadius: Float = 36f,
     touchRadius: Float = 80f,
     onPatternComplete: (String) -> Unit
 ) {
     val selectedNodes = remember { mutableStateListOf<Int>() }
+    // Clear canvas lines when clearTrigger changes
+    LaunchedEffect(clearTrigger) {
+        selectedNodes.clear()
+    }
+
     var currentTouchPosition by remember { mutableStateOf<Offset?>(null) }
     val nodes = remember { mutableMapOf<Int, Offset>() }
 
