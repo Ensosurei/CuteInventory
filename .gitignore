@@ -1,0 +1,43 @@
+# ==========================================
+# Android Studio & Gradle
+# ==========================================
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+
+# Gradle build files
+build/
+*/build/
+*/*/build/
+
+# Android Studio project configuration
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries/
+.idea/libraries/
+.idea/caches/
+.idea/navEditor.xml
+
+# Log files
+*.log
+
+# Android Profiler / Traces
+*.hprof
+
+# Key files & Keystores (Seguridad)
+*.jks
+*.keystore
+*.pepk
+
+# ==========================================
+# Custom / App Secrets
+# ==========================================
+# Ignora cualquier archivo con credenciales de entorno o propiedades locales
+local.properties
+secrets.properties
