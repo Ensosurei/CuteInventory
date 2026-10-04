@@ -15,15 +15,14 @@ val OnLightSecondary = Color(0xFFFFFFFF)
 val OnLightBackground = Color(0xFF332025)
 val OnLightSurface = Color(0xFF4A282D)
 
-// --- BolisMartha Palette: Dark Mode (Derivados manteniendo la esencia) ---
-val DarkBackground = Color(0xFF1E1719)   // Fondo café/rosa muy oscuro
-val DarkSurface = Color(0xFF2E2024)      // Superficie oscura con tinte cálido
-val DarkPrimary = Color(0xFFF3A6BA)      // Rosa pastel brillante para destacar
-val DarkSecondary = Color(0xFFE581A3)    // Magenta suave
-val DarkTertiary = Color(0xFFAAA8D6)     // Lavanda desaturado
-val DarkAccent = Color(0xFF8ECED6)       // Cian aclarado para alto contraste
+val DarkBackground = Color(0xFF1E1719)
+val DarkSurface = Color(0xFF2E2024)
+val DarkPrimary = Color(0xFFF3A6BA)
+val DarkSecondary = Color(0xFFE581A3)
+val DarkTertiary = Color(0xFFAAA8D6)
+val DarkAccent = Color(0xFF8ECED6)
 
 val OnDarkPrimary = Color(0xFF4E1624)
 val OnDarkSecondary = Color(0xFF3B0C1A)
-val OnDarkBackground = Color(0xFFFEEDDD) // Texto crema suave[cite: 1]
+val OnDarkBackground = Color(0xFFFEEDDD)
 val OnDarkSurface = Color(0xFFFEEDDD)

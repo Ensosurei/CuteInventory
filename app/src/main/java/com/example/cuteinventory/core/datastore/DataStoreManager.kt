@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.security.MessageDigest
 
@@ -57,13 +58,12 @@ class DataStoreManager(private val context: Context) {
         }
     }
 
+    // Verify hashed security answer
     suspend fun verifyAnswer(answer: String): Boolean {
-        var isValid = false
-        context.dataStore.data.collect { prefs ->
-            val savedHash = prefs[SECURITY_ANSWER_HASH]
-            isValid = savedHash == hashString(answer.trim().lowercase())
-        }
-        return isValid
+        val prefs = context.dataStore.data.first()
+        val savedHash = prefs[SECURITY_ANSWER_HASH] ?: return false
+        val inputHash = hashString(answer.trim().lowercase())
+        return savedHash == inputHash
     }
 
     // --- Theme Preference ---
