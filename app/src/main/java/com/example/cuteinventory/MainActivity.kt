@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +25,9 @@ import com.example.cuteinventory.ui.auth.AuthViewModel
 import com.example.cuteinventory.ui.auth.OnboardingScreen
 import com.example.cuteinventory.ui.auth.RecoveryScreen
 import com.example.cuteinventory.ui.auth.UnlockScreen
+import com.example.cuteinventory.ui.inventory.InventoryScreen
+import com.example.cuteinventory.ui.inventory.InventoryViewModel
+import com.example.cuteinventory.ui.inventory.InventoryViewModelFactory
 
 class MainActivity : ComponentActivity() {
 
@@ -39,6 +40,11 @@ class MainActivity : ComponentActivity() {
                 return AuthViewModel(dataStoreManager) as T
             }
         }
+    }
+
+    // Factory to instantiate InventoryViewModel
+    private val inventoryViewModel: InventoryViewModel by viewModels {
+        InventoryViewModelFactory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,25 +106,11 @@ class MainActivity : ComponentActivity() {
                         }
 
                         is AuthUiState.Authenticated -> {
-                            InventoryMainScreen()
+                            InventoryScreen(viewModel = inventoryViewModel)
                         }
                     }
                 }
             }
         }
-    }
-}
-
-// Temporary placeholder for the main inventory screen
-@Composable
-fun InventoryMainScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "¡Bienvenida al Inventario!",
-            style = MaterialTheme.typography.headlineMedium
-        )
     }
 }
